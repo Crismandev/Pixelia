@@ -1,64 +1,241 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixelia - Diseño Web de Alto Rendimiento para Negocios</title>
-    <meta name="description" content="Diseño web profesional y optimizado para SEO. Creamos sitios web de alto rendimiento, rápidos y seguros para impulsar tu negocio online.">
-    <meta name="keywords" content="diseño web, desarrollo web, página web profesional, SEO, e-commerce, diseño responsivo, marketing digital, portafolio web">
+    <meta name="description"
+        content="Diseño web profesional y optimizado para SEO. Creamos sitios web de alto rendimiento, rápidos y seguros para impulsar tu negocio online.">
+    <meta name="keywords"
+        content="diseño web, desarrollo web, página web profesional, SEO, e-commerce, diseño responsivo, marketing digital, portafolio web">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pixeliaweb.netlify.app/">
     <meta property="og:title" content="Pixelia - Diseño Web de Alto Rendimiento para Negocios">
-    <meta property="og:description" content="Convertimos tus ideas en una experiencia digital impactante. Páginas rápidas, seguras y optimizadas para el éxito.">
+    <meta property="og:description"
+        content="Convertimos tus ideas en una experiencia digital impactante. Páginas rápidas, seguras y optimizadas para el éxito.">
     <meta property="og:image" content="https://placehold.co/1200x630/667eea/ffffff?text=Pixelia">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://pixeliaweb.netlify.app/">
     <meta property="twitter:title" content="Pixelia - Diseño Web de Alto Rendimiento para Negocios">
-    <meta property="twitter:description" content="Convertimos tus ideas en una experiencia digital impactante. Páginas rápidas, seguras y optimizadas para el éxito.">
+    <meta property="twitter:description"
+        content="Convertimos tus ideas en una experiencia digital impactante. Páginas rápidas, seguras y optimizadas para el éxito.">
     <meta property="twitter:image" content="https://placehold.co/1200x630/667eea/ffffff?text=Pixelia">
 
     <!-- Preload Main Stylesheet -->
     <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles.css"></noscript>
-    
+    <noscript>
+        <link rel="stylesheet" href="styles.css">
+    </noscript>
+
     <!-- Critical CSS: Carga lo esencial para la primera visualización de forma instantánea -->
     <style>
         :root {
-            --primary-color: #2563eb; --primary-hover: #1d4ed8; --text-dark: #1f2937; --text-light: #6b7280; --background-light: #f8fafc; --background-dark: #111827; --white: #ffffff; --border-color: #e5e7eb;
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --background-light: #f8fafc;
+            --background-dark: #111827;
+            --white: #ffffff;
+            --border-color: #e5e7eb;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text-dark); overflow-x: hidden; background-color: var(--white); }
-        html { scroll-behavior: smooth; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; background-color: transparent; transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; padding: 1rem 0; z-index: 1000; }
-        .navbar.scrolled { background-color: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;}
-        .nav-logo h2 { color: var(--white); font-size: 1.8rem; font-weight: 700; padding-right: 120px; margin-left: 20px; transition: color 0.3s ease; }
-        .navbar.scrolled .nav-logo h2 { color: var(--primary-color); }
-        .nav-menu { display: flex; list-style: none; gap: 2rem; }
-        .nav-link { color: var(--white); text-decoration: none; font-weight: 500; padding-bottom: 5px; border-bottom: 2px solid transparent; transition: color 0.3s, border-color 0.3s; }
-        .navbar.scrolled .nav-link { color: var(--text-dark); }
-        .nav-link:hover { color: var(--primary-color); border-bottom-color: var(--primary-color); }
-        .navbar.scrolled .nav-link:hover { color: var(--primary-color); }
-        .nav-cta { background-color: var(--white); color: var(--primary-color); border: 2px solid var(--white); padding: 0.6rem 1.2rem; border-radius: 50px; cursor: pointer; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
-        .nav-cta:hover { background-color: transparent; color: var(--white); transform: translateY(-2px); }
-        .navbar.scrolled .nav-cta { border-color: var(--primary-color); color: var(--primary-color); }
-        .navbar.scrolled .nav-cta:hover { background-color: var(--primary-color); color: var(--white); }
-        .hamburger { display: none; }
-        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: var(--white); min-height: 100vh; display: flex; align-items: center; padding-top: 80px; }
-        .hero-container { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 3rem; }
-        .hero-title { font-size: 3.2rem; font-weight: 700; margin-bottom: 1.5rem; line-height: 1.2; }
-        .hero-subtitle { font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 500px; }
-        .hero-buttons { display: flex; gap: 1rem; }
-        .cta-button, .secondary-button { padding: 0.8rem 1.8rem; border-radius: 50px; border: 2px solid var(--white); font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.3s; }
-        .cta-button { background-color: var(--white); color: var(--primary-color); }
-        .cta-button:hover { background-color: transparent; color: var(--white); transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .secondary-button { background-color: transparent; color: var(--white); }
-        .secondary-button:hover { background-color: var(--white); color: var(--primary-color); transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background-color: var(--white);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: transparent;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            padding: 1rem 0;
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-logo h2 {
+            color: var(--white);
+            font-size: 1.8rem;
+            font-weight: 700;
+            padding-right: 120px;
+            margin-left: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar.scrolled .nav-logo h2 {
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            transition: color 0.3s, border-color 0.3s;
+        }
+
+        .navbar.scrolled .nav-link {
+            color: var(--text-dark);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .navbar.scrolled .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-cta {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background-color: transparent;
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .navbar.scrolled .nav-cta {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .navbar.scrolled .nav-cta:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .hamburger {
+            display: none;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cta-button,
+        .secondary-button {
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            border: 2px solid var(--white);
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .cta-button {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secondary-button {
+            background-color: transparent;
+            color: var(--white);
+        }
+
+        .secondary-button:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
     </style>
 
     <!-- Schema.org for SEO -->
@@ -86,6 +263,7 @@
     }
     </script>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="nav-container">
@@ -99,7 +277,8 @@
                 <li><a href="#precios" class="nav-link">Precios</a></li>
                 <li><a href="#contacto" class="nav-link">Contacto</a></li>
             </ul>
-            <a href="https://wa.me/51988052497?text=Hola, me interesa conocer más sobre sus servicios" target="_blank" rel="noopener noreferrer" class="nav-cta">Solicitar Cotización</a>
+            <a href="https://wa.me/51988052497?text=Hola, me interesa conocer más sobre sus servicios" target="_blank"
+                rel="noopener noreferrer" class="nav-cta">Solicitar Cotización</a>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -113,14 +292,16 @@
         <div class="container hero-container">
             <div class="hero-content">
                 <h1 class="hero-title"></h1>
-                <p class="hero-subtitle">Convertimos tus ideas en una experiencia digital impactante. Páginas rápidas, seguras y optimizadas para el éxito.</p>
+                <p class="hero-subtitle">Convertimos tus ideas en una experiencia digital impactante. Páginas rápidas,
+                    seguras y optimizadas para el éxito.</p>
                 <div class="hero-buttons">
                     <a href="#portafolio" class="cta-button">Ver Casos de Éxito</a>
-                    <a href="https://wa.me/51988052497?text=Hola, me interesa conocer más sobre sus servicios" target="_blank" rel="noopener noreferrer" class="secondary-button">Contactar Ahora</a>
+                    <a href="https://wa.me/51988052497?text=Hola, me interesa conocer más sobre sus servicios"
+                        target="_blank" rel="noopener noreferrer" class="secondary-button">Contactar Ahora</a>
                 </div>
             </div>
             <div class="hero-image">
-                 <div class="mockup-container">
+                <div class="mockup-container">
                     <div class="mockup-screen">
                         <div class="mockup-content">
                             <div class="mockup-header">
@@ -162,35 +343,58 @@
     <section id="caracteristicas" class="features section">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Características de Alto Rendimiento</h2>
-            <p class="section-subtitle animate-on-scroll">Construimos sitios web con tecnología moderna enfocada en resultados.</p>
+            <p class="section-subtitle animate-on-scroll">Construimos sitios web con tecnología moderna enfocada en
+                resultados.</p>
             <div class="features-grid">
                 <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M4 12v8H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2Z"/><path d="M12 4h9"/><path d="M4 4v8H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20h9" />
+                            <path d="M4 12v8H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2Z" />
+                            <path d="M12 4h9" />
+                            <path d="M4 4v8H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2Z" />
+                        </svg>
                     </div>
                     <h3>Diseño a Medida</h3>
-                    <p>Tu sitio se verá increíble en cualquier dispositivo, desde móviles hasta computadoras de escritorio.</p>
+                    <p>Tu sitio se verá increíble en cualquier dispositivo, desde móviles hasta computadoras de
+                        escritorio.</p>
                 </div>
                 <div class="feature-card animate-on-scroll">
-                     <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2" />
+                            <path d="M12 18h.01" />
+                        </svg>
                     </div>
                     <h3>Sitios Responsive</h3>
                     <p>Páginas web ultra rápidas para una mejor experiencia de usuario y posicionamiento SEO.</p>
                 </div>
                 <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m21 21-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z" />
+                        </svg>
                     </div>
                     <h3>Optimización SEO</h3>
-                    <p>Protegemos tu sitio y los datos de tus usuarios con certificados SSL y medidas de seguridad robustas.</p>
+                    <p>Protegemos tu sitio y los datos de tus usuarios con certificados SSL y medidas de seguridad
+                        robustas.</p>
                 </div>
                 <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                            <line x1="12" y1="19" x2="12" y2="23" />
+                            <line x1="8" y1="23" x2="16" y2="23" />
+                        </svg>
                     </div>
                     <h3>Soporte Técnico</h3>
-                    <p>Construimos tu sitio con las bases necesarias para que sea visible en los motores de búsqueda.</p>
+                    <p>Construimos tu sitio con las bases necesarias para que sea visible en los motores de búsqueda.
+                    </p>
                 </div>
             </div>
         </div>
@@ -200,52 +404,67 @@
     <section id="portafolio" class="portfolio section">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Casos de Éxito Recientes</h2>
-            <p class="section-subtitle animate-on-scroll">Proyectos que han generado resultados tangibles para nuestros clientes.</p>
+            <p class="section-subtitle animate-on-scroll">Proyectos que han generado resultados tangibles para nuestros
+                clientes.</p>
             <div class="case-study-grid">
-                
+
                 <div class="case-study-item animate-on-scroll">
                     <div class="case-study-image-wrapper">
-                        <img src="./assets/logo_OP.webp" 
-                               width="600" height="450" 
-                               title="Logo de OnlyPlants - Galería de Plantas Decorativas"
-                               alt="Logo de OnlyPlants - Galería de Plantas Decorativas">
+                        <img src="./assets/logo_OP.webp" width="600" height="450"
+                            title="Logo de OnlyPlants - Galería de Plantas Decorativas"
+                            alt="Logo de OnlyPlants - Galería de Plantas Decorativas">
                     </div>
                     <div class="case-study-content">
                         <h3>OnlyPlants - Galería de Plantas Decorativas</h3>
                         <div class="case-study-details">
-                            <p><strong>El Desafío:</strong> Un negocio local de venta de plantas decorativas premium necesitaba una presencia online atractiva para mostrar su catálogo y generar ventas online.</p>
-                            <p><strong>Nuestra Solución:</strong> Desarrollamos una galería web interactiva con más de 30 especies, sistema de filtros, búsqueda en tiempo real, modal responsive y asistente IA para recomendaciones personalizadas.</p>
-                            <p><strong>Resultados:</strong> <span class="result-highlight">+60% de aumento en consultas de productos y mejora significativa en la experiencia de usuario.</span></p>
+                            <p><strong>El Desafío:</strong> Un negocio local de venta de plantas decorativas premium
+                                necesitaba una presencia online atractiva para mostrar su catálogo y generar ventas
+                                online.</p>
+                            <p><strong>Nuestra Solución:</strong> Desarrollamos una galería web interactiva con más de
+                                30 especies, sistema de filtros, búsqueda en tiempo real, modal responsive y asistente
+                                IA para recomendaciones personalizadas.</p>
+                            <p><strong>Resultados:</strong> <span class="result-highlight">+60% de aumento en consultas
+                                    de productos y mejora significativa en la experiencia de usuario.</span></p>
                         </div>
                         <div class="portfolio-tech">
-                            <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Bootstrap</span><span>Font Awesome</span>
+                            <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Bootstrap</span><span>Font
+                                Awesome</span>
                         </div>
                         <div class="portfolio-links">
-                            <a href="https://web-onlyplants.netlify.app/" target="_blank" rel="noopener noreferrer" class="portfolio-link">Ver Demo</a>
-                            <a href="https://github.com/Crismandev/onlyplants" target="_blank" rel="noopener noreferrer" class="portfolio-link">GitHub</a>
+                            <a href="https://web-onlyplants.netlify.app/" target="_blank" rel="noopener noreferrer"
+                                class="portfolio-link">Ver Demo</a>
+                            <a href="https://github.com/Crismandev/onlyplants" target="_blank" rel="noopener noreferrer"
+                                class="portfolio-link">GitHub</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="case-study-item animate-on-scroll reverse">
-                     <div class="case-study-image-wrapper">
+                    <div class="case-study-image-wrapper">
                         <img src="./assets/fortunato_entrance.jpg"
-                             alt="[Interior elegante de restaurante moderno con ambiente sofisticado]" 
-                             loading="lazy" width="600" height="450">
+                            alt="[Interior elegante de restaurante moderno con ambiente sofisticado]" loading="lazy"
+                            width="600" height="450">
                     </div>
                     <div class="case-study-content">
                         <h3>FORTUWEB - Digitalización de Restaurante</h3>
                         <div class="case-study-details">
-                            <p><strong>El Desafío:</strong> Un restaurante de alta cocina con una excelente reputación local carecía de una presencia online que reflejara su calidad, dificultando la captación de reservas online.</p>
-                            <p><strong>Nuestra Solución:</strong> Creamos una página web elegante con un sistema de reservas integrado y una galería de platos optimizada para cargar instantáneamente en dispositivos móviles.</p>
-                            <p><strong>Resultados:</strong> <span class="result-highlight">Reducción del 90% en el tiempo de carga y +25% de reservas online.</span></p>
+                            <p><strong>El Desafío:</strong> Un restaurante de alta cocina con una excelente reputación
+                                local carecía de una presencia online que reflejara su calidad, dificultando la
+                                captación de reservas online.</p>
+                            <p><strong>Nuestra Solución:</strong> Creamos una página web elegante con un sistema de
+                                reservas integrado y una galería de platos optimizada para cargar instantáneamente en
+                                dispositivos móviles.</p>
+                            <p><strong>Resultados:</strong> <span class="result-highlight">Reducción del 90% en el
+                                    tiempo de carga y +25% de reservas online.</span></p>
                         </div>
                         <div class="portfolio-tech">
                             <span>HTML</span><span>CSS</span><span>JavaScript</span>
                         </div>
                         <div class="portfolio-links">
-                            <a href="https://fortu-web.netlify.app/" target="_blank" rel="noopener noreferrer" class="portfolio-link">Ver Demo</a>
-                            <a href="https://github.com/Crismandev/FORTUWEB-2.0" target="_blank" rel="noopener noreferrer" class="portfolio-link">GitHub</a>
+                            <a href="https://fortu-web.netlify.app/" target="_blank" rel="noopener noreferrer"
+                                class="portfolio-link">Ver Demo</a>
+                            <a href="https://github.com/Crismandev/FORTUWEB-2.0" target="_blank"
+                                rel="noopener noreferrer" class="portfolio-link">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -258,8 +477,9 @@
     <section id="precios" class="pricing section">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Planes de Inversión</h2>
-            <p class="section-subtitle animate-on-scroll">Elige el plan que mejor se alinee con los objetivos de tu proyecto.</p>
-            
+            <p class="section-subtitle animate-on-scroll">Elige el plan que mejor se alinee con los objetivos de tu
+                proyecto.</p>
+
             <div class="pricing-grid">
                 <div class="pricing-card animate-on-scroll">
                     <div class="pricing-header">
@@ -268,13 +488,34 @@
                         <p>Perfecto para emprendedores</p>
                     </div>
                     <ul class="pricing-features">
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Diseño responsive</li>
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Hasta 5 páginas</li>
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Formulario de contacto</li>
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Optimización SEO básica</li>
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 1 mes de soporte</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Diseño responsive</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Hasta 5 páginas</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Formulario de contacto</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Optimización SEO básica</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> 1 mes de soporte</li>
                     </ul>
-                    <a href="https://wa.me/51988052497?text=Hola, me interesa el plan Básico" target="_blank" rel="noopener noreferrer" class="pricing-btn">Elegir este plan</a>
+                    <a href="https://wa.me/51988052497?text=Hola, me interesa el plan Básico" target="_blank"
+                        rel="noopener noreferrer" class="pricing-btn">Elegir este plan</a>
                 </div>
                 <div class="pricing-card featured animate-on-scroll">
                     <div class="pricing-badge">Más popular</div>
@@ -284,13 +525,34 @@
                         <p>Ideal para pequeñas empresas</p>
                     </div>
                     <ul class="pricing-features">
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Todo del plan Básico</li>
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Hasta 10 páginas</li>
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Blog integrado</li>
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Galería de imágenes</li>
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 3 meses de soporte</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Todo del plan Básico</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Hasta 10 páginas</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Blog integrado</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Galería de imágenes</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> 3 meses de soporte</li>
                     </ul>
-                    <a href="https://wa.me/51988052497?text=Hola, me interesa el plan Estándar" target="_blank" rel="noopener noreferrer" class="pricing-btn">Elegir este plan</a>
+                    <a href="https://wa.me/51988052497?text=Hola, me interesa el plan Estándar" target="_blank"
+                        rel="noopener noreferrer" class="pricing-btn">Elegir este plan</a>
                 </div>
                 <div class="pricing-card animate-on-scroll">
                     <div class="pricing-header">
@@ -299,13 +561,34 @@
                         <p>Para empresas en crecimiento</p>
                     </div>
                     <ul class="pricing-features">
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Todo del plan Estándar</li>
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Páginas ilimitadas</li>
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-commerce básico</li>
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Integración redes sociales</li>
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 6 meses de soporte</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Todo del plan Estándar</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Páginas ilimitadas</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> E-commerce básico</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Integración redes sociales</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> 6 meses de soporte</li>
                     </ul>
-                    <a href="https://wa.me/51988052497?text=Hola, me interesa el plan Premium" target="_blank" rel="noopener noreferrer" class="pricing-btn">Elegir este plan</a>
+                    <a href="https://wa.me/51988052497?text=Hola, me interesa el plan Premium" target="_blank"
+                        rel="noopener noreferrer" class="pricing-btn">Elegir este plan</a>
                 </div>
             </div>
         </div>
@@ -315,15 +598,32 @@
     <section id="contacto" class="contact section">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Hablemos de tu proyecto</h2>
-            <p class="section-subtitle animate-on-scroll">Estamos listos para hacer realidad tu visión. Contáctanos para una cotización gratuita y sin compromiso.</p>
+            <p class="section-subtitle animate-on-scroll">Estamos listos para hacer realidad tu visión. Contáctanos para
+                una cotización gratuita y sin compromiso.</p>
             <div class="contact-content">
-                 <div class="contact-info">
+                <div class="contact-info">
                     <h3>¿Listo para impulsar tu negocio?</h3>
-                    <p>Contáctanos y recibe una cotización personalizada para tu proyecto. Estamos aquí para hacer realidad tu visión digital.</p>
+                    <p>Contáctanos y recibe una cotización personalizada para tu proyecto. Estamos aquí para hacer
+                        realidad tu visión digital.</p>
                     <div class="contact-details">
-                        <div class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span>crisman.dev@gmail.com</span></div>
-                        <div class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+51 988 052 497</span></div>
-                        <div class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Av. Buenos Aires, Trujillo, Perú</span></div>
+                        <div class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2" />
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                            </svg><span>web.pixelia@gmail.com</span></div>
+                        <div class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg><span>+51 988 052 497</span></div>
+                        <div class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg><span>Av. Buenos Aires, Trujillo, Perú</span></div>
                     </div>
                 </div>
                 <form class="contact-form" id="contactForm" name="contact" netlify>
@@ -337,17 +637,27 @@
                     </div>
                     <div class="form-group">
                         <label for="mensaje" class="sr-only">Cuéntanos sobre tu proyecto</label>
-                        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu proyecto" rows="5" required></textarea>
+                        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu proyecto" rows="5"
+                            required></textarea>
                     </div>
                     <button type="submit" class="cta-button-form">Enviar Mensaje</button>
                 </form>
             </div>
-             <div id="successMessage" class="success-message">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <div id="successMessage" class="success-message">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
                 <p>¡Gracias por tu mensaje! Te contactaremos pronto.</p>
             </div>
-             <div id="errorMessage" class="error-message">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <div id="errorMessage" class="error-message" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
                 <p>Hubo un error al enviar tu mensaje. Por favor, intenta de nuevo.</p>
             </div>
         </div>
@@ -361,10 +671,29 @@
                     <h3>Pixelia</h3>
                     <p>Creamos experiencias digitales excepcionales que impulsan tu negocio hacia el éxito.</p>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-                        <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
-                        <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-                        <a href="#" aria-label="TikTok"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M12 12v8a4 4 0 0 0 4-4h-4z"/></svg></a>
+                        <a href="https://www.facebook.com/profile.php?id=61581234586049" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg></a>
+                        <a href="https://www.tiktok.com/@pixelia48" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                            </svg></a>
+                        <a href="https://www.instagram.com/web.pixelia/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg></a>
+                        <a href="#" aria-label="TikTok"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+                                <path d="M12 12v8a4 4 0 0 0 4-4h-4z" />
+                            </svg></a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -401,5 +730,5 @@
 
     <script src="script.js" defer></script>
 </body>
-</html>
 
+</html>
