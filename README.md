@@ -8,14 +8,14 @@ Pixelia es una empresa especializada en la **creación y optimización de págin
 
 Nuestra misión es transformar ideas en experiencias web excepcionales que generen resultados tangibles para nuestros clientes.
 
-## 🚀 Características Principales
+##  Características Principales
 
-- ✨ **Diseño Moderno y Responsivo**: Interfaces atractivas que se adaptan a cualquier dispositivo
-- 🎯 **Optimización para Conversiones**: Estrategias probadas para maximizar resultados
-- ⚡ **Rendimiento Optimizado**: Carga rápida y experiencia de usuario fluida
-- 🔍 **SEO Integrado**: Posicionamiento web desde el primer día
-- 📱 **Mobile-First**: Diseño prioritario para dispositivos móviles
-- 🛡️ **Seguridad Avanzada**: Protección integral de datos y contenido
+-  **Diseño Moderno y Responsivo**: Interfaces atractivas que se adaptan a cualquier dispositivo
+-  **Optimización para Conversiones**: Estrategias probadas para maximizar resultados
+-  **Rendimiento Optimizado**: Carga rápida y experiencia de usuario fluida
+-  **SEO Integrado**: Posicionamiento web desde el primer día
+-  **Mobile-First**: Diseño prioritario para dispositivos móviles
+-  **Seguridad Avanzada**: Protección integral de datos y contenido
 
 ## 🛠️ Tecnologías Utilizadas
 

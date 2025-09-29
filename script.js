@@ -3,12 +3,12 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollAnimations();
     initializeFormSubmission();
     initializeSmoothScrolling();
-    initializeTestimonials();
     
     // Iniciar efectos especiales del Hero
     const heroTitle = document.querySelector('.hero-title');
     if(heroTitle) {
-        typeWriter(heroTitle, "Diseñamos la página web perfecta para tu negocio", 50);
+        // Texto modificado para ser más directo
+        typeWriter(heroTitle, "Convertimos ideas en resultados digitales.", 50);
     }
     window.addEventListener('scroll', throttle(parallaxHero, 10));
 });
@@ -20,19 +20,25 @@ function initializeNavigation() {
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
+    // Optimización: No ejecutar si no hay navbar
+    if (!navbar) return;
+
     window.addEventListener('scroll', () => {
         navbar.classList.toggle('scrolled', window.scrollY > 50);
-    });
+    }, { passive: true }); // Mejora de rendimiento en scroll
 
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
+            // Bloquear scroll del body cuando el menú está abierto
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
     }
@@ -41,17 +47,21 @@ function initializeNavigation() {
 // === ANIMACIONES DE SCROLL ===
 function initializeScrollAnimations() {
     const elements = document.querySelectorAll('.animate-on-scroll');
+    if (!('IntersectionObserver' in window)) {
+        // Si el navegador no soporta IntersectionObserver, muestra los elementos
+        elements.forEach(el => el.classList.add('is-visible'));
+        return;
+    }
+
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                // Aplicar un retraso escalonado
-                setTimeout(() => {
-                    entry.target.classList.add('is-visible');
-                }, index * 100);
-                observer.unobserve(entry.target);
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // Dejar de observar una vez animado
             }
         });
     }, { threshold: 0.1 });
+
     elements.forEach(el => observer.observe(el));
 }
 
@@ -69,51 +79,21 @@ function typeWriter(element, text, speed) {
     type();
 }
 
-// === EFECTO PARALLAX ===
+// === EFECTO PARALLAX (OPTIMIZADO) ===
 function parallaxHero() {
     const hero = document.querySelector('.hero');
+    // Optimización: No ejecutar si el elemento no está en la vista
+    const rect = hero.getBoundingClientRect();
+    if (rect.bottom < 0 || rect.top > window.innerHeight) {
+        return;
+    }
+    
     const scrollPosition = window.pageYOffset;
-    hero.style.backgroundPositionY = scrollPosition * 0.7 + 'px';
+    // Se usa 'transform' para un rendimiento más fluido que 'backgroundPositionY'
+    hero.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
 }
 
-// === CARRUSEL DE TESTIMONIOS ===
-function initializeTestimonials() {
-    const testimonials = document.querySelectorAll('.testimonial-card');
-    const dots = document.querySelectorAll('.dot');
-    let currentIndex = 0;
-    let intervalId;
-
-    function showTestimonial(index) {
-        testimonials.forEach((card, i) => {
-            card.classList.toggle('active', i === index);
-            dots[i].classList.toggle('active', i === index);
-        });
-    }
-
-    function nextTestimonial() {
-        currentIndex = (currentIndex + 1) % testimonials.length;
-        showTestimonial(currentIndex);
-    }
-
-    dots.forEach(dot => {
-        dot.addEventListener('click', (e) => {
-            const index = parseInt(e.target.dataset.slide);
-            currentIndex = index;
-            showTestimonial(currentIndex);
-            resetInterval();
-        });
-    });
-
-    function resetInterval() {
-        clearInterval(intervalId);
-        intervalId = setInterval(nextTestimonial, 5000);
-    }
-
-    intervalId = setInterval(nextTestimonial, 5000);
-}
-
-
-// === FORMULARIO DE CONTACTO ===
+// === FORMULARIO DE CONTACTO (CON NETLIFY AJAX) ===
 function initializeFormSubmission() {
     const form = document.getElementById('contactForm');
     const successMessage = document.getElementById('successMessage');
@@ -121,12 +101,33 @@ function initializeFormSubmission() {
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            // Simulación de envío
-            successMessage.style.display = 'block';
-            form.reset();
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 4000);
+            
+            const formData = new FormData(form);
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.textContent = 'Enviando...';
+            submitButton.disabled = true;
+
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                successMessage.style.display = 'flex';
+                form.reset();
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            })
+            .catch((error) => {
+                console.error('Error al enviar el formulario:', error);
+                alert('Hubo un error al enviar tu mensaje. Por favor, intenta de nuevo.');
+            })
+            .finally(() => {
+                submitButton.textContent = originalButtonText;
+                submitButton.disabled = false;
+            });
         });
     }
 }
@@ -136,9 +137,14 @@ function initializeSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         });
     });
 }
