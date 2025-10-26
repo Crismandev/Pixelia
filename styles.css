@@ -150,6 +150,8 @@
     }
 }
 
+
+
 .mockup-url-bar {
     background: #e2e8f0;
     border-radius: 15px;
@@ -771,15 +773,74 @@
     padding-top: 2rem;
 }
 
+/* Botón flotante de WhatsApp */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #fff;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.3s;
+    text-decoration: none;
+}
+
+.whatsapp-btn:hover {
+    background-color: #128C7E;
+    transform: translateY(-3px);
+}
+
+.whatsapp-btn i {
+    font-size: 24px;
+}
+
 /* Responsivo */
-@media (max-width: 992px) {
+/* Tablets y pantallas medianas */
+@media (max-width: 1024px) {
+    .section {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .mockup-container {
+        max-width: 380px;
+    }
+
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .feature-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .case-study-item {
+        gap: 2rem;
+    }
+
+    .case-study-content h3 {
+        font-size: 1.6rem;
     }
 
     .pricing-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
     }
 
     .pricing-card.featured {
@@ -790,13 +851,22 @@
         transform: scale(1.03) translateY(-10px);
     }
 
-    .footer-content {
-        grid-template-columns: 1fr 1fr;
+    .contact-content {
+        gap: 2rem;
+        padding: 2.5rem;
     }
 
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 992px) {
     .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 2.5rem;
     }
 
     .hero-subtitle {
@@ -815,82 +885,301 @@
     .case-study-item,
     .case-study-item.reverse {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 
     .case-study-item.reverse .case-study-image-wrapper {
         order: 0;
     }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        max-width: 500px;
+        margin: 0 auto;
+    }
 }
 
+/* Tablets pequeñas y móviles grandes */
 @media (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100vh;
-        background: var(--white);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        transition: left 0.5s ease;
-        z-index: 1000;
+    .section {
+        padding: 50px 0;
     }
 
-    .nav-menu.active {
-        left: 0;
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
     }
 
-    .nav-link {
-        color: var(--text-dark);
-        font-size: 1.5rem;
+    .section-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 2.5rem;
     }
 
-    .navbar.scrolled .nav-link {
-        color: var(--text-dark);
-    }
-
-    .hamburger {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-        z-index: 1001;
-    }
-
-    .hamburger span {
-        width: 25px;
-        height: 3px;
-        background-color: var(--white);
-        transition: all 0.3s;
-    }
-
-    .navbar.scrolled .hamburger span {
-        background-color: var(--text-dark);
-    }
-
-    .hamburger.active span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-    .hamburger.active span {
-        background-color: var(--text-dark);
+    .mockup-container {
+        max-width: 320px;
+        margin-top: 1rem;
     }
 
     .features-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .feature-card {
+        padding: 1.8rem 1.2rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .feature-card p {
+        font-size: 0.9rem;
+    }
+
+    .case-study-content h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .case-study-details p {
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .portfolio-tech {
+        gap: 0.4rem;
+        margin: 1.2rem 0;
+    }
+
+    .portfolio-tech span {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.6rem;
+    }
+
+    .portfolio-links {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .portfolio-link {
+        text-align: center;
+        padding: 0.6rem 1.2rem;
+    }
+
+    .pricing-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .price {
+        font-size: 2.2rem;
+    }
+
+    .contact-content {
+        padding: 2rem;
+        gap: 1.5rem;
+    }
+
+    .contact-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .contact-item {
+        margin-bottom: 1.2rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.2rem;
     }
 
     .footer-content {
         grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .whatsapp-btn {
+        bottom: 15px;
+        right: 15px;
+        padding: 12px;
+    }
+
+    .whatsapp-btn i {
+        font-size: 20px;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .section {
+        padding: 40px 0;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+        line-height: 1.3;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+    }
+
+    .mockup-container {
+        max-width: 280px;
+        padding: 12px;
+    }
+
+    .mockup-header {
+        height: 30px;
+        padding: 0 12px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .url-text {
+        font-size: 10px;
+    }
+
+    .mockup-body {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .feature-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+    }
+
+    .feature-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .case-study-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .case-study-details p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    .portfolio-tech span {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .pricing-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .pricing-header h3 {
+        font-size: 1.3rem;
+    }
+
+    .price {
+        font-size: 2rem;
+        margin: 0.8rem 0;
+    }
+
+    .pricing-features {
+        margin: 1.5rem 0;
+        gap: 0.8rem;
+    }
+
+    .pricing-features li {
+        font-size: 0.9rem;
+    }
+
+    .contact-content {
+        padding: 1.5rem;
+    }
+
+    .contact-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .contact-item {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .cta-button-form {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .footer-content {
+        gap: 1.5rem;
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .footer-section {
+        font-size: 0.9rem;
+    }
+
+    .whatsapp-btn {
+        bottom: 10px;
+        right: 10px;
+        padding: 10px;
+    }
+
+    .whatsapp-btn i {
+        font-size: 18px;
+    }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 320px) {
+    .container {
+        padding: 0 8px;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+    .mockup-container {
+        max-width: 250px;
+    }
+
+    .feature-card {
+        padding: 1.2rem 0.8rem;
+    }
+
+    .case-study-details p {
+        font-size: 0.8rem;
+    }
+
+    .pricing-card {
+        padding: 1.2rem 0.8rem;
+    }
+
+    .contact-content {
+        padding: 1.2rem;
     }
 }

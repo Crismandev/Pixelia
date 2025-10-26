@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
         typeWriter(heroTitle, "Convertimos ideas en resultados digitales.", 50);
     }
     window.addEventListener('scroll', throttle(parallaxHero, 10));
+    
+    // Inicializar botón de WhatsApp
+    initializeWhatsAppButton();
 });
 
 // === NAVEGACIÓN ===
@@ -28,20 +31,39 @@ function initializeNavigation() {
     }, { passive: true }); // Mejora de rendimiento en scroll
 
     if (hamburger && navMenu) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            // Bloquear scroll del body cuando el menú está abierto
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        });
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                // Bloquear scroll del body cuando el menú está abierto
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
             });
-        });
-    }
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // Cerrar menú al hacer clic fuera de él
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Cerrar menú al redimensionar la ventana
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
 }
 
 // === ANIMACIONES DE SCROLL ===
@@ -162,3 +184,40 @@ function throttle(func, limit) {
         }
     }
 }
+// === CONFIGURACIÓN Y LÓGICA DEL BOTÓN DE WHATSAPP ===
+
+const WHATSAPP_CONFIG = {
+    number: '+51988052497',
+    message: {
+        general: 'Hola, me interesa conocer más sobre sus servicios.',
+        pricing: 'Hola, quisiera información sobre el plan Estándar.'
+    }
+};
+
+
+const Utils = {
+    createWhatsAppURL(message = WHATSAPP_CONFIG.message.general) {
+        const encodedMessage = encodeURIComponent(message);
+        const cleanNumber = WHATSAPP_CONFIG.number.replace(/[^0-9]/g, '');
+        return `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
+    }
+};
+
+function initializeWhatsAppButton() {
+    const whatsappButton = document.getElementById('whatsapp-btn');
+    if (!whatsappButton) return;
+
+
+    whatsappButton.href = Utils.createWhatsAppURL();
+
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            whatsappButton.style.transform = 'scale(1)';
+        } else {
+            whatsappButton.style.transform = 'scale(0)';
+        }
+    }, { passive: true });
+}
+
+// Ya se inicializa en el DOMContentLoaded principal
