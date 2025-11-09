@@ -1,6 +1,6 @@
 # Pixelia - Creación y Optimización de Páginas Web
 
-![Pixelia Logo](https://via.placeholder.com/200x80/4f46e5/ffffff?text=Pixelia)
+![Pixelia Logo](https://imgur.com/a/bE1g5pW)
 
 ## 🌟 Acerca de Pixelia
 
