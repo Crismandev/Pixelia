@@ -198,12 +198,47 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* Gradiente que se funde directamente hacia el fondo claro */
+            background: linear-gradient(
+                to bottom,
+                #667eea 0%,
+                #764ba2 60%,
+                rgba(118, 75, 162, 0.25) 85%,
+                var(--background-light) 100%
+            );
             color: var(--white);
             min-height: 100vh;
             display: flex;
             align-items: center;
             padding-top: 80px;
+            position: relative;
+        }   
+
+        /* Patrón sutil tipo '+' en la parte superior del banner */
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.22' stroke-width='1.5'%3E%3Cline x1='14' y1='8' x2='14' y2='20'/%3E%3Cline x1='8' y1='14' x2='20' y2='14'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 28px 28px;
+            background-repeat: repeat;
+            background-position: center top;
+            opacity: 1;
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.65) 35%, rgba(0,0,0,0) 80%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.65) 35%, rgba(0,0,0,0) 80%);
+        }
+
+        /* Pseudo-elemento para la fusión suave con la siguiente sección */
+        .hero::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 140px; /* Suave realce del desvanecimiento inferior */
+            pointer-events: none;
+            background: linear-gradient(to bottom, rgba(248, 250, 252, 0) 0%, var(--background-light) 100%);
         }
 
         .hero-container {
@@ -554,9 +589,58 @@
                 clientes.</p>
             <div class="case-study-grid">
 
+                <div class="case-study-item animate-on-scroll reverse">
+                    <div class="case-study-image-wrapper">
+                        <img src="./assets/project_grillmaster.svg" width="600" height="450"
+                            title="Grill Master - Sistema de Ventas"
+                            alt="Grill Master - Sistema web completo para gestión de pedidos de restaurante">
+                    </div>
+                    <div class="case-study-content">
+                        <h3>GRILL MASTER - Sistema de Ventas</h3>
+                        <div class="case-study-details">
+                            <p><strong>El Desafío:</strong> Un restaurante necesitaba un sistema eficiente para gestionar pedidos online sin complicadas integraciones de pago, aprovechando la popularidad de WhatsApp.</p>
+                            <p><strong>Nuestra Solución:</strong> Creamos un sistema completo con catálogo interactivo, carrito de compras, y envío directo de pedidos por WhatsApp, eliminando barreras de pago y aprovechando una plataforma que todos usan.</p>
+                            <p><strong>Resultados:</strong> <span class="result-highlight">Reducción del 70% en tiempo de procesamiento de pedidos y aumento del 40% en ventas online.</span></p>
+                        </div>
+                        <div class="portfolio-tech">
+                            <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>WhatsApp API</span><span>LocalStorage</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://grillmasterweb.netlify.app/" target="_blank" rel="noopener noreferrer"
+                                class="portfolio-link">Ver Demo</a>
+                            <a href="https://github.com/Crismandev/Sistema_Venta-Restaurant" target="_blank" rel="noopener noreferrer"
+                                class="portfolio-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="case-study-item animate-on-scroll">
+                    <div class="case-study-image-wrapper">
+                        <img src="./assets/project_atlas.svg" width="600" height="450"
+                            title="3I/ATLAS - Landing Page Sci-Fi"
+                            alt="3I/ATLAS - Landing page interactiva con temática de ciencia ficción y efectos visuales dinámicos">
+                    </div>
+                    <div class="case-study-content">
+                        <h3>3I/ATLAS - Landing Sci-Fi</h3>
+                        <div class="case-study-details">
+                            <p><strong>El Desafío:</strong> Crear una landing page inmersiva con temática de ciencia ficción que capturara la atención del visitante con elementos interactivos y una narrativa envolvente.</p>
+                            <p><strong>Nuestra Solución:</strong> Desarrollamos una experiencia web única con cuenta regresiva en tiempo real, efectos visuales dinámicos utilizando Vanta.js, y una estética futurista que transporta al usuario a otro mundo.</p>
+                            <p><strong>Resultados:</strong> <span class="result-highlight">Incremento del 85% en tiempo de permanencia en el sitio y experiencia de usuario memorable que genera conversaciones.</span></p>
+                        </div>
+                        <div class="portfolio-tech">
+                            <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Tailwind CSS</span><span>Vanta.js</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://3i-atlas.netlify.app/" target="_blank" rel="noopener noreferrer"
+                                class="portfolio-link">Ver Demo</a>
+                            <a href="https://github.com/Crismandev/3I-ATLAS" target="_blank" rel="noopener noreferrer"
+                                class="portfolio-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="case-study-item animate-on-scroll">
                     <div class="case-study-image-wrapper">
-                        <img src="./assets/logo_OP.webp" width="600" height="450"
+                        <img src="./assets/project_onlyplants.svg" width="600" height="450"
                             title="Logo de OnlyPlants - Galería de Plantas Decorativas"
                             alt="Logo de OnlyPlants - Galería de Plantas Decorativas">
                     </div>
@@ -587,7 +671,7 @@
 
                 <div class="case-study-item animate-on-scroll reverse">
                     <div class="case-study-image-wrapper">
-                        <img src="./assets/fortunato_entrance.jpg"
+                        <img src="./assets/portafolio_fortuweb.svg"
                             alt="[Interior elegante de restaurante moderno con ambiente sofisticado]" loading="lazy"
                             width="600" height="450">
                     </div>
@@ -611,6 +695,32 @@
                                 class="portfolio-link">Ver Demo</a>
                             <a href="https://github.com/Crismandev/FORTUWEB-2.0" target="_blank"
                                 rel="noopener noreferrer" class="portfolio-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== NUEVOS PROYECTOS AGREGADOS ===== -->
+                <div class="case-study-item animate-on-scroll">
+                    <div class="case-study-image-wrapper">
+                        <img src="./assets/project_kafe.gif" width="600" height="450"
+                            title="KAFÉ - Vitrina Digital para Café"
+                            alt="KAFÉ - Vitrina digital para productores de café con diseño elegante">
+                    </div>
+                    <div class="case-study-content">
+                        <h3>KAFÉ - Vitrina Digital para Café</h3>
+                        <div class="case-study-details">
+                            <p><strong>El Desafío:</strong> Productores de café artesanal necesitaban una plataforma digital que mostrara la calidad y proceso de sus productos de manera profesional y atractiva.</p>
+                            <p><strong>Nuestra Solución:</strong> Desarrollamos una vitrina digital con wireframes profesionales, estructura de contenido optimizada y diseño que transmite la pasión y calidad del café artesanal.</p>
+                            <p><strong>Resultados:</strong> <span class="result-highlight">Incremento del 50% en consultas de clientes potenciales y mejor posicionamiento como marca premium.</span></p>
+                        </div>
+                        <div class="portfolio-tech">
+                            <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Responsive Design</span><span>UX/UI</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://kafe-web.netlify.app/" target="_blank" rel="noopener noreferrer"
+                                class="portfolio-link">Ver Demo</a>
+                            <a href="https://github.com/Crismandev/kafe-website" target="_blank" rel="noopener noreferrer"
+                                class="portfolio-link">GitHub</a>
                         </div>
                     </div>
                 </div>

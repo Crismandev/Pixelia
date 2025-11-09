@@ -360,8 +360,14 @@
 
 /* Sección de Características */
 .features {
+    /* Fondo claro continuo, sin overlay para evitar dobles desvanecimientos */
+    position: relative;
     background-color: var(--background-light);
 }
+
+/* Fusión suave con el banner anterior */
+/* Eliminamos el overlay superior para que el hero cubra la transición */
+.features::before { display: none; }
 
 .features-grid {
     display: grid;
