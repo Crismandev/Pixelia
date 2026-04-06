@@ -125,26 +125,44 @@ function initializeFormSubmission() {
             e.preventDefault();
             
             const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
             const submitButton = form.querySelector('button[type="submit"]');
             const originalButtonText = submitButton.textContent;
+            
             submitButton.textContent = 'Enviando...';
             submitButton.disabled = true;
 
-            fetch('/', {
+            fetch(form.action, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData).toString()
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json' 
+                },
+                body: JSON.stringify(data)
             })
-            .then(() => {
-                successMessage.style.display = 'flex';
-                form.reset();
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 5000);
+            .then(response => {
+                if (response.ok) {
+                    successMessage.style.display = 'flex';
+                    form.reset();
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                } else {
+                    return response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            throw new Error('Formspree error');
+                        }
+                    });
+                }
             })
             .catch((error) => {
                 console.error('Error al enviar el formulario:', error);
-                alert('Hubo un error al enviar tu mensaje. Por favor, intenta de nuevo.');
+                document.getElementById('errorMessage').style.display = 'flex';
+                setTimeout(() => {
+                    document.getElementById('errorMessage').style.display = 'none';
+                }, 5000);
             })
             .finally(() => {
                 submitButton.textContent = originalButtonText;
